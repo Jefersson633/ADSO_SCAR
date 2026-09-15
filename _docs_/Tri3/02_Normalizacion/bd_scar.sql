@@ -82,14 +82,14 @@ CREATE TABLE `domicilios` (
   `domicilio_costo_envio` decimal(10,2) NOT NULL COMMENT 'Valor o tarifa calculada por el servicio de flete',
   `domicilio_estado` varchar(20) NOT NULL COMMENT 'Valor o tarifa calculada por el servicio de flete',
   `VENTAS_venta_id` int(11) NOT NULL COMMENT 'Llave foránea vinculada a la venta correspondiente en VENTAS',
-  `REPARTIDORES_editorial_id` int(11) DEFAULT NULL COMMENT 'Llave foránea opcional que asigna al repartidor en REPARTIDORES'
+  `REPARTIDORES_repartidor_id` int(11) DEFAULT NULL COMMENT 'Llave foránea opcional que asigna al repartidor en REPARTIDORES'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `domicilios`
 --
 
-INSERT INTO `domicilios` (`domicilio_id`, `domicilio_direccion`, `domicilio_costo_envio`, `domicilio_estado`, `VENTAS_venta_id`, `REPARTIDORES_editorial_id`) VALUES
+INSERT INTO `domicilios` (`domicilio_id`, `domicilio_direccion`, `domicilio_costo_envio`, `domicilio_estado`, `VENTAS_venta_id`, `REPARTIDORES_repartidor_id`) VALUES
 (1, 'Carrera 4 # 5-6, Apto 101', 5000.00, 'Entregado', 1, 1),
 (2, 'Avenida 7 # 8-9, Casa 4', 4500.00, 'Entregado', 2, 2),
 (3, 'Transversal 10 # 11-12', 6000.00, 'En Ruta', 3, 2),
@@ -256,7 +256,7 @@ ALTER TABLE `domicilios`
   ADD PRIMARY KEY (`domicilio_id`),
   ADD UNIQUE KEY `VENTAS_venta_id_UNIQUE` (`VENTAS_venta_id`),
   ADD KEY `fk_DOMICILIOS_VENTAS1_idx` (`VENTAS_venta_id`),
-  ADD KEY `fk_DOMICILIOS_REPARTIDORES1_idx` (`REPARTIDORES_editorial_id`);
+  ADD KEY `fk_DOMICILIOS_REPARTIDORES1_idx` (`REPARTIDORES_repartidor_id`);
 
 --
 -- Indices de la tabla `productos`
@@ -356,7 +356,7 @@ ALTER TABLE `detalle de ventas`
 -- Filtros para la tabla `domicilios`
 --
 ALTER TABLE `domicilios`
-  ADD CONSTRAINT `fk_DOMICILIOS_REPARTIDORES1` FOREIGN KEY (`REPARTIDORES_editorial_id`) REFERENCES `repartidores` (`repartidor_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_DOMICILIOS_REPARTIDORES1` FOREIGN KEY (`REPARTIDORES_repartidor_id`) REFERENCES `repartidores` (`repartidor_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_DOMICILIOS_VENTAS1` FOREIGN KEY (`VENTAS_venta_id`) REFERENCES `ventas` (`venta_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
