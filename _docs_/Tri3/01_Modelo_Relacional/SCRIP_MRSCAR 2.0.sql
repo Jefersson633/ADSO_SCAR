@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `BD_SCAR`.`ROLES` (
   `rol_id` INT NOT NULL AUTO_INCREMENT COMMENT 'Identificador único autoincremental del rol',
   `rol_nombre` VARCHAR(50) NOT NULL COMMENT 'Nombre del perfil de acceso',
   PRIMARY KEY (`rol_id`),
-  UNIQUE INDEX `rol_nombre_UNIQUE` (`rol_nombre` ASC) VISIBLE)
+  UNIQUE INDEX `rol_nombre_UNIQUE` (`rol_nombre` ASC) )
 ENGINE = InnoDB;
 
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `BD_SCAR`.`CATEGORIAS` (
   `categoria_id` INT NOT NULL AUTO_INCREMENT COMMENT 'Identificador único autoincremental de la categoría',
   `categoria_nombre` VARCHAR(100) NOT NULL COMMENT 'Nombre de la clasificación (sabores, peso, etc)',
   PRIMARY KEY (`categoria_id`),
-  UNIQUE INDEX `categoria_nombre_UNIQUE` (`categoria_nombre` ASC) VISIBLE)
+  UNIQUE INDEX `categoria_nombre_UNIQUE` (`categoria_nombre` ASC) )
 ENGINE = InnoDB;
 
 
@@ -54,8 +54,8 @@ CREATE TABLE IF NOT EXISTS `BD_SCAR`.`PRODUCTOS` (
   `producto_estado` VARCHAR(20) NOT NULL COMMENT 'Disponibilidad comercial del ítem (Disponible/agotado)',
   `CATEGORIAS_categoria_id` INT NOT NULL COMMENT 'Llave foránea que referencia la categoría asociada en CATEGORIAS',
   PRIMARY KEY (`producto_id`),
-  INDEX `fk_PRODUCTOS_CATEGORIAS1_idx` (`CATEGORIAS_categoria_id` ASC) VISIBLE,
-  UNIQUE INDEX `producto_codigo_UNIQUE` (`producto_codigo` ASC) VISIBLE,
+  INDEX `fk_PRODUCTOS_CATEGORIAS1_idx` (`CATEGORIAS_categoria_id` ASC) ,
+  UNIQUE INDEX `producto_codigo_UNIQUE` (`producto_codigo` ASC) ,
   CONSTRAINT `fk_PRODUCTOS_CATEGORIAS1`
     FOREIGN KEY (`CATEGORIAS_categoria_id`)
     REFERENCES `BD_SCAR`.`CATEGORIAS` (`categoria_id`)
@@ -91,9 +91,9 @@ CREATE TABLE IF NOT EXISTS `BD_SCAR`.`USUARIOS` (
   `usuario_estado` VARCHAR(20) NOT NULL COMMENT 'Estado de la cuenta en la plataforma (activo/inactivo)',
   `ROLES_rol_id` INT NOT NULL COMMENT 'Llave foránea que referencia al rol asignado en la tabla ROLES',
   PRIMARY KEY (`usuario_id`),
-  INDEX `fk_USUARIOS_ROLES_idx` (`ROLES_rol_id` ASC) VISIBLE,
-  UNIQUE INDEX `usuario_cedula_UNIQUE` (`usuario_cedula` ASC) VISIBLE,
-  UNIQUE INDEX `usuario_correo_UNIQUE` (`usuario_correo` ASC) VISIBLE,
+  INDEX `fk_USUARIOS_ROLES_idx` (`ROLES_rol_id` ASC) ,
+  UNIQUE INDEX `usuario_cedula_UNIQUE` (`usuario_cedula` ASC) ,
+  UNIQUE INDEX `usuario_correo_UNIQUE` (`usuario_correo` ASC) ,
   CONSTRAINT `fk_USUARIOS_ROLES`
     FOREIGN KEY (`ROLES_rol_id`)
     REFERENCES `BD_SCAR`.`ROLES` (`rol_id`)
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `BD_SCAR`.`VENTAS` (
   `venta_estado` VARCHAR(20) NOT NULL COMMENT 'Estado del ciclo del pedido (Pedido, confirmado, entregado, cancelado)',
   `USUARIOS_usuario_id` INT NOT NULL COMMENT 'Llave foránea del cliente que realizó la compara en USUARIOS',
   PRIMARY KEY (`venta_id`),
-  INDEX `fk_VENTAS_USUARIOS1_idx` (`USUARIOS_usuario_id` ASC) VISIBLE,
+  INDEX `fk_VENTAS_USUARIOS1_idx` (`USUARIOS_usuario_id` ASC) ,
   CONSTRAINT `fk_VENTAS_USUARIOS1`
     FOREIGN KEY (`USUARIOS_usuario_id`)
     REFERENCES `BD_SCAR`.`USUARIOS` (`usuario_id`)
@@ -132,8 +132,8 @@ CREATE TABLE IF NOT EXISTS `BD_SCAR`.`DETALLE DE VENTAS` (
   `VENTAS_venta_id` INT NOT NULL COMMENT 'Llave foránea e identificadora de la venta asociada',
   `PRODUCTOS_producto_id` INT NOT NULL COMMENT 'Lave foránea identificadora del producto comprado',
   PRIMARY KEY (`VENTAS_venta_id`, `PRODUCTOS_producto_id`),
-  INDEX `fk_DETALLE DE VENTAS_VENTAS1_idx` (`VENTAS_venta_id` ASC) VISIBLE,
-  INDEX `fk_DETALLE DE VENTAS_PRODUCTOS1_idx` (`PRODUCTOS_producto_id` ASC) VISIBLE,
+  INDEX `fk_DETALLE DE VENTAS_VENTAS1_idx` (`VENTAS_venta_id` ASC) ,
+  INDEX `fk_DETALLE DE VENTAS_PRODUCTOS1_idx` (`PRODUCTOS_producto_id` ASC) ,
   CONSTRAINT `fk_DETALLE DE VENTAS_VENTAS1`
     FOREIGN KEY (`VENTAS_venta_id`)
     REFERENCES `BD_SCAR`.`VENTAS` (`venta_id`)
@@ -158,9 +158,9 @@ CREATE TABLE IF NOT EXISTS `BD_SCAR`.`DOMICILIOS` (
   `VENTAS_venta_id` INT NOT NULL COMMENT 'Llave foránea vinculada a la venta correspondiente en VENTAS',
   `REPARTIDORES_editorial_id` INT NULL COMMENT 'Llave foránea opcional que asigna al repartidor en REPARTIDORES',
   PRIMARY KEY (`domicilio_id`),
-  INDEX `fk_DOMICILIOS_VENTAS1_idx` (`VENTAS_venta_id` ASC) VISIBLE,
-  INDEX `fk_DOMICILIOS_REPARTIDORES1_idx` (`REPARTIDORES_editorial_id` ASC) VISIBLE,
-  UNIQUE INDEX `VENTAS_venta_id_UNIQUE` (`VENTAS_venta_id` ASC) VISIBLE,
+  INDEX `fk_DOMICILIOS_VENTAS1_idx` (`VENTAS_venta_id` ASC) ,
+  INDEX `fk_DOMICILIOS_REPARTIDORES1_idx` (`REPARTIDORES_editorial_id` ASC) ,
+  UNIQUE INDEX `VENTAS_venta_id_UNIQUE` (`VENTAS_venta_id` ASC) ,
   CONSTRAINT `fk_DOMICILIOS_VENTAS1`
     FOREIGN KEY (`VENTAS_venta_id`)
     REFERENCES `BD_SCAR`.`VENTAS` (`venta_id`)
