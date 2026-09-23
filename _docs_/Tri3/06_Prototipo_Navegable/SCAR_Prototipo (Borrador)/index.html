@@ -22,10 +22,11 @@
     <!-- ============================================================ -->
     <nav class="navbar navbar-expand-lg border-bottom border-warning border-opacity-25 sticky-top" style="background-color: var(--scar-bg-dark);">
         <div class="container">
-            <!-- Logo y Marca Dulce Dip -->
+            <!-- Logo y Marca Dulce Dip / SCAR -->
             <a class="navbar-brand d-flex align-items-center text-light fw-bold" href="index.html">
                 <img src="assets/img/logo.png" alt="Dulce Dip Logo" width="40" height="40" class="me-2 rounded-circle border border-warning" onerror="this.src='https://via.placeholder.com/40/2D5B25/C6AF69?text=DD'">
-                <span style="color: var(--scar-gold-accent);">Dulce Dip</span>                                
+                <span style="color: var(--scar-gold-accent);">Dulce Dip</span>
+                <span class="badge bg-secondary ms-2 fs-6 opacity-75">SCAR</span>
             </a>
 
             <!-- Botón Hamburguesa para vista móvil -->
@@ -44,10 +45,16 @@
                 </form>
 
                 <!-- Enlaces de navegación y Botón de Inicio de Sesión -->
-                <ul class="navbar-nav ms-auto align-items-center gap-2">                    
+                <ul class="navbar-nav ms-auto align-items-center gap-2">
+                    <li class="nav-item">
+                        <a class="nav-link text-light active fw-semibold" href="#catalogo"><i class="bi bi-grid-fill me-1" style="color: var(--scar-gold-accent);"></i> Catálogo</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link text-light opacity-75" href="#nosotros">Nosotros</a>
-                    </li>                    
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light opacity-75" href="#contacto">Contacto</a>
+                    </li>
                     <li class="nav-item ms-lg-2">
                         <a href="pages/auth/login.html" class="btn text-white fw-bold px-3 py-2 shadow-sm" style="background: linear-gradient(180deg, var(--scar-green-main) 0%, var(--scar-green-hover) 100%); border: 1px solid var(--scar-gold-accent);">
                             <i class="bi bi-person-lock me-1"></i> Iniciar Sesión
@@ -70,14 +77,14 @@
                 Sabor Natural <span style="color: var(--scar-gold-accent);">Hecho con Magia y Pasión</span>
             </h1>
             <p class="lead text-light opacity-75 mx-auto mb-4" style="max-width: 720px;">
-                Bienvenido a Dulce Dip. Disfruta de la perfecta combinación entre la suavidad del queso crema y el sabor único de nuestras frutas, semillas y hortalizas  colombianas seleccionadas.
+                Bienvenido a Dulce Dip. Disfruta de la perfecta combinación entre la suavidad del queso crema y el sabor único de nuestras frutas colombianas seleccionadas.
             </p>
             <div class="d-flex justify-content-center gap-3">
                 <a href="#catalogo" class="btn btn-lg fw-bold text-white px-4" style="background-color: var(--scar-green-main); border: 1px solid var(--scar-gold-accent);">
                     <i class="bi bi-bag-check me-2"></i> Ver Catálogo
                 </a>
                 <a href="pages/auth/login.html" class="btn btn-lg btn-outline-light px-4">
-                     Acceso al Sistema
+                     Acceso Sistema SCAR
                 </a>
             </div>
         </div>
@@ -90,14 +97,16 @@
         <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
             <div>
                 <h2 class="h2 text-light mb-1" style="color: var(--scar-gold-accent) !important;">
-                    <i class="bi bi-shop me-2"></i>Nuestros Quesos
+                    <i class="bi bi-shop me-2"></i>Nuestros Dulces y Salsas
                 </h2>
                 <p class="text-light opacity-75 mb-0">Explora la oferta de productos disponibles en el catálogo.</p>
             </div>
             <!-- Filtros por categoría -->
             <div class="btn-group" role="group" aria-label="Filtros">
                 <button type="button" class="btn btn-sm btn-outline-warning active">Todos</button>
-                <button type="button" class="btn btn-sm btn-outline-warning">Quesos Crema</button>    
+                <button type="button" class="btn btn-sm btn-outline-warning">Quesos Crema</button>
+                <button type="button" class="btn btn-sm btn-outline-warning">Salsas Frutales</button>
+                <button type="button" class="btn btn-sm btn-outline-warning">Combos</button>
             </div>
         </div>
 
@@ -116,7 +125,7 @@
                         <small class="text-warning text-uppercase fw-bold mb-1">Queso Crema Artesanal</small>
                         <h5 class="card-title text-light fw-bold">Queso Crema Feijoa</h5>
                         <p class="card-text text-light opacity-75 flex-grow-1 fs-6">
-                            Queso crema suave de feijoa artesanal. Presentación especial de 130g perfecta para untar en galletas y pan.
+                            Queso crema suave e infusionado con mermelada natural de feijoa artesanal. Presentación especial de 130g perfecta para untar en galletas y pan.
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary">
                             <span class="fs-4 fw-bold" style="color: var(--scar-gold-accent);">$12.000 COP</span>
@@ -271,7 +280,7 @@
         <div class="container text-center">
             <h3 class="fw-bold mb-3" style="color: var(--scar-gold-accent);">Sobre Dulce Dip y Sistema SCAR</h3>
             <p class="text-light opacity-75 mx-auto mb-0" style="max-width: 800px;">
-                Dulce Dip es una microempresa dedicada a la elaboración artesanal de quesos crema con frutas.
+                Dulce Dip es una microempresa dedicada a la elaboración artesanal de quesos crema con frutas. El sistema <strong>SCAR (Sistema de Control, Administración y Registro)</strong> optimiza la gestión de usuarios, catálogo, control de stock en inventario, registro de ventas y logística de domicilios.
             </p>
         </div>
     </section>
@@ -292,7 +301,7 @@
                 </div>
                 <div class="col-md-4 text-md-end">
                     <a href="pages/auth/login.html" class="text-warning text-decoration-none small">
-                        <i class="bi bi-person-badge me-1"></i> Acceso
+                        <i class="bi bi-person-badge me-1"></i> Acceso Administrador / Vendedor
                     </a>
                 </div>
             </div>
